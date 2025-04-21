@@ -2,9 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 
-
-# BlogCreate schema for request validation (creating a blog)
-class BlogCreate(BaseModel):
+class Blog(BaseModel):
     title: str
     content: str
     author: str
