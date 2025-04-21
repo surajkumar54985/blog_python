@@ -1,6 +1,5 @@
 fastapi
 uvicorn
-pydantic
 motor
-passlib[bcrypt]
 python-dotenv
+boto3
