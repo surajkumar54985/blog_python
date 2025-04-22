@@ -2,8 +2,15 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 
-class Blog(BaseModel):
+class BlogBase(BaseModel):
     title: str
     content: str
     author: str
-    created_at: Optional[datetime] = datetime.utcnow()
+    image_url: Optional[str] = None  # 👈 Add this
+
+class BlogCreate(BlogBase):
+    pass
+
+class BlogOut(BlogBase):
+    id: str
+    created_at: datetime
