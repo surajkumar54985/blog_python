@@ -8,4 +8,5 @@ class BlogCreate(BaseModel):
     title: str
     content: str
     author: str
+    image_url: str
     created_at: Optional[datetime] = datetime.utcnow()

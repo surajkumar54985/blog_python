@@ -13,8 +13,9 @@ class Settings:
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
     
     # AWS credentials
-    AWS_ACCESS_KEY: str = os.getenv("AWS_ACCESS_KEY")
-    AWS_SECRET_KEY: str = os.getenv("AWS_SECRET_KEY")
-    AWS_BUCKET_NAME: str = os.getenv("AWS_BUCKET_NAME")
+    AWS_ACCESS_KEY: str = os.getenv("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_KEY: str = os.getenv("AWS_SECRET_ACCESS_KEY")
+    AWS_BUCKET_NAME: str = os.getenv("AWS_S3_BUCKET")
+    AWS_REGION: str = os.getenv("AWS_REGION")
 
 settings = Settings()
