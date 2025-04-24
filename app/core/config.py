@@ -7,6 +7,8 @@ class Settings:
     # MongoDB connection string
     MONGO_URI: str = os.getenv("MONGO_DETAILS")
     
+    CLOUDFRONT_DOMAIN: str = os.getenv("CLOUDFRONT_DOMAIN")
+    
     # JWT Authentication settings
     SECRET_KEY: str = os.getenv("SECRET_KEY")
     ALGORITHM: str = os.getenv("ALGORITHM")

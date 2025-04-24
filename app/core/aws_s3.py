@@ -24,7 +24,8 @@ def upload_file_to_s3(file: UploadFile, folder: str = "uploads"):
             unique_filename,
             ExtraArgs={"ContentType": file.content_type}
         )
-        file_url = f"https://{settings.AWS_BUCKET_NAME}.s3.{settings.AWS_REGION}.amazonaws.com/{unique_filename}"  # ✅ Cleaner
+        # file_url = f"https://{settings.AWS_BUCKET_NAME}.s3.{settings.AWS_REGION}.amazonaws.com/{unique_filename}"
+        file_url = f"https://{settings.CLOUDFRONT_DOMAIN}/{unique_filename}"
         return file_url
     except NoCredentialsError:
         raise Exception("AWS credentials not found.")
