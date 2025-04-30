@@ -20,4 +20,9 @@ class Settings:
     AWS_BUCKET_NAME: str = os.getenv("AWS_S3_BUCKET")
     AWS_REGION: str = os.getenv("AWS_REGION")
 
+    SES_SENDER_EMAIL: str = os.getenv("SES_SENDER_EMAIL")
+    FRONTEND_BASE_URL: str = os.getenv("FRONTEND_BASE_URL")
+    class Config:
+        env_file = ".env"
+
 settings = Settings()
