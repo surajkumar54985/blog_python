@@ -4,7 +4,7 @@ from uuid import uuid4
 from app.utils.mongo import convert_objectid
 from bson import ObjectId
 from app.utils.security import hash_password, verify_password
-from app.core.aws_ses import send_confirmation_email  # Uncomment when ready
+from app.core.aws_ses import send_confirmation_email
 
 async def create_user(user: UserCreate):
     existing_user = await db.users.find_one({"email": user.email})
