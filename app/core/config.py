@@ -22,6 +22,8 @@ class Settings:
 
     SES_SENDER_EMAIL: str = os.getenv("SES_SENDER_EMAIL")
     FRONTEND_BASE_URL: str = os.getenv("FRONTEND_BASE_URL")
+
+    STEP_FUNCTION_ARN: str = os.getenv("STEP_FUNCTION_ARN")
     class Config:
         env_file = ".env"
 
