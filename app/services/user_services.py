@@ -6,6 +6,7 @@ from bson import ObjectId
 from app.utils.security import hash_password, verify_password
 from app.core.aws_ses import send_confirmation_email
 from app.core.aws_step import start_email_verification_step_function
+from app.core.aws_dynamodb import log_email_confirmation
 
 async def create_user(user: UserCreate):
     existing_user = await db.users.find_one({"email": user.email})
@@ -24,7 +25,7 @@ async def create_user(user: UserCreate):
     # send_confirmation_email(user.email, token)
 
     # Start the Step Function instead of sending email directly
-    await start_email_verification_step_function(user.email, token)
+    # await start_email_verification_step_function(user.email, token)
 
     return {"msg": "User created. Check your email for confirmation."}
 
@@ -62,4 +63,8 @@ async def confirm_email(token: str):
     if not user:
         raise Exception("Invalid token.")
     await db.users.update_one({"_id": user["_id"]}, {"$set": {"verified": True}})
+
+    # Log to DynamoDB
+    log_email_confirmation(user["email"], token)
+
     return {"msg": "Email confirmed."}
